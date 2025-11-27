@@ -5,7 +5,9 @@
 
 package com.northpole.auditoria_elfos.service;
 
+import com.northpole.auditoria_elfos.audit.ElfoRevisionEntity;
 import com.northpole.auditoria_elfos.entity.*;
+import com.northpole.auditoria_elfos.entity.HistoricoSimplesDTO;
 import com.northpole.auditoria_elfos.repository.CriancaRepository;
 import org.springframework.data.history.Revision;
 import org.springframework.data.history.Revisions;
@@ -47,7 +49,7 @@ public class AuditoriaService {
         while(var2.hasNext()) {
             Crianca crianca = (Crianca)var2.next();
             if (!crianca.isBemComportada()) {
-                crianca.setPresente("Picles de Jiló");
+                crianca.setPresente("Picolé de Bacalhau");
             }
         }
 
@@ -123,8 +125,12 @@ public class AuditoriaService {
         // 2. Mapeia a lista de Revisões para a lista de RevisaoDTO
         List<RevisaoDTO> historicoSimplificado = listaRevisoes.stream()
                 .map(revision -> {
+										// Obtem a entidade de Revisao
+		                ElfoRevisionEntity revEntity = (ElfoRevisionEntity) revision.getMetadata().getDelegate();
                     // Mapeia os campos da Entidade e da Metadata para o DTO
                     String presente = revision.getEntity().getPresente();
+		                // Extrai o nome do Elfo (Poderia ser outro dado)
+										String elfo = revEntity.getElfoResponsavel();
 
                     // Converte Instant para LocalDateTime (como fizemos antes)
                     LocalDateTime data = revision.getMetadata().getRevisionInstant()
@@ -132,7 +138,7 @@ public class AuditoriaService {
                             .atZone(ZoneId.systemDefault())
                             .toLocalDateTime();
 
-                    return new RevisaoDTO(presente, data);
+                    return new RevisaoDTO(presente, data, elfo);
                 })
                 .collect(Collectors.toList());
 
@@ -180,9 +186,9 @@ public class AuditoriaService {
         crianca.setBemComportada(bomComportamento);
 
         if (!bomComportamento) {
-            // Regra A: Se a criança for MÁ, o presente é "Jiló"
-            crianca.setPresente("Jiló em Conserva");
-            System.out.println("⚠️ ALERTA! " + crianca.getNome() + " receberá Jiló.");
+            // Regra A: Se a criança for MÁ, o presente é "Bacalhau"
+            crianca.setPresente("Picolé de Bacalhau ");
+            System.out.println("⚠️ ALERTA! " + crianca.getNome() + " receberá Picolé de Bacalhau.");
 
         } else {
             // Regra B: Se a criança for BOA, REVERTE o presente para o desejo original.
