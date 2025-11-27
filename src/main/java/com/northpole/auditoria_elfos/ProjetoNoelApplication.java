@@ -23,11 +23,11 @@ public class ProjetoNoelApplication {
 	@Bean
 	public CommandLineRunner inicializarDados(AuditoriaService service) {
 		return (args) -> {
-			System.out.println("\ud83c\udf85 --- POPULANDO A LISTA DE CRIANÇAS (8 REGISTROS) --- \ud83d\udcdd");
+			System.out.println("\ud83c\udf85 --- POPULANDO A LISTA DE CRIANÇAS (9 REGISTROS) --- \ud83d\udcdd");
 			Crianca felipe = new Crianca("Gael", "Playstations 5", false);
 			Crianca monica = new Crianca("Francisca", "Tablet", true);
-			Crianca pablo = new Crianca("Pablo", "Cama Para Dormir", true);
-			Crianca joao = new Crianca("João", "Paz Na Terra", false);
+			Crianca pablo = new Crianca("Pablo", "Paz Na Terra", false);
+			Crianca joao = new Crianca("João", "Cama Para Dormir", true);
 			Crianca maria = new Crianca("Maria", "Bicicleta", false);
 			Crianca ana = new Crianca("Ana", "Unicornio Verde", true);
 			Crianca jose = new Crianca("José", "Material Escolar", true);
