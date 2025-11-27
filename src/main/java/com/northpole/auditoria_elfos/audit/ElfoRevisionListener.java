@@ -10,7 +10,7 @@ public class ElfoRevisionListener implements RevisionListener {
     @Override
     public void newRevision(Object revisionEntity) {
         ElfoRevisionEntity elfoRevision = (ElfoRevisionEntity) revisionEntity;
-        
+
         // Tenta obter o nome de usuário do contexto de segurança do Spring
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -21,7 +21,7 @@ public class ElfoRevisionListener implements RevisionListener {
             username = authentication.getName();
         } else {
             // Caso seja uma operação de sistema (startup, testes sem login)
-            username = "SISTEMA_NAO_AUTENTICADO"; 
+            username = "SISTEMA_NAO_AUTENTICADO";
         }
 
         elfoRevision.setElfoResponsavel(username);

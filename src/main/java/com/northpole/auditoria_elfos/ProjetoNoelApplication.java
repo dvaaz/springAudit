@@ -36,6 +36,7 @@ public class ProjetoNoelApplication {
 			int qtdCriancas = service.salvarTodas(criancasParaSalvar);
 			System.out.println("✅ Lista populada com sucesso. Total de registros: " + qtdCriancas);
 			System.out.println("API REST JÁ DISPONÍVEL em http://localhost:8090/swagger-ui/index.html");
+			System.out.println("Console disponível em: http://localhost:8080/h2-console");
 		};
 	}
 }
