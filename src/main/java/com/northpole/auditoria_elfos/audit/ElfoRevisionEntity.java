@@ -1,7 +1,7 @@
 package com.northpole.auditoria_elfos.audit;
 
 import jakarta.persistence.*;
-import org.hibernate.envers.DefaultRevisionEntity;
+
 import org.hibernate.envers.RevisionEntity;
 import org.hibernate.envers.RevisionNumber;
 import org.hibernate.envers.RevisionTimestamp;
@@ -10,10 +10,10 @@ import java.io.Serializable;
 
 // Define que esta é a nova entidade de revisão que o Envers deve usar
 @Entity
-@RevisionEntity(ElfoRevisionListener.class)
+@RevisionEntity(ElfoRevisionListener.class) // Anotacao da entidade revisora
 @Table(name = "elfo_rev_info") // Use um nome de tabela customizado
 public class ElfoRevisionEntity implements Serializable {
-
+		// Normalmente, em versoes anteriores, se utilizava o org.hibernate.envers.DefaultRevisionEntity no lugar de Serializable,
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		@RevisionNumber // Marca este campo como o número da revisão

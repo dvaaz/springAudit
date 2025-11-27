@@ -8,6 +8,7 @@ import org.springframework.data.repository.history.RevisionRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CriancaRepository extends JpaRepository<Crianca, Long>, RevisionRepository<Crianca, Long, Long> {
-	Revisions<Long, Crianca> findRevisions(Long aLong);
+public interface CriancaRepository extends
+		JpaRepository<Crianca, Long>, RevisionRepository<Crianca, Long, Long> {
+	Revisions<Long, Crianca> findRevisions(Long aLonRevisionRepositoryg);
 }

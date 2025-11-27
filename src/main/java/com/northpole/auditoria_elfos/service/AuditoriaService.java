@@ -49,7 +49,7 @@ public class AuditoriaService {
         while(var2.hasNext()) {
             Crianca crianca = (Crianca)var2.next();
             if (!crianca.isBemComportada()) {
-                crianca.setPresente("Picolé de Bacalhau");
+                crianca.setPresente("Picolé de Jiló");
             }
         }
 
@@ -186,9 +186,9 @@ public class AuditoriaService {
         crianca.setBemComportada(bomComportamento);
 
         if (!bomComportamento) {
-            // Regra A: Se a criança for MÁ, o presente é "Bacalhau"
-            crianca.setPresente("Picolé de Bacalhau ");
-            System.out.println("⚠️ ALERTA! " + crianca.getNome() + " receberá Picolé de Bacalhau.");
+            // Regra A: Se a criança for MÁ, o presente é "Jiló"
+            crianca.setPresente("Picolé de Jiló ");
+            System.out.println("⚠️ ALERTA! " + crianca.getNome() + " receberá Picolé de Jiló.");
 
         } else {
             // Regra B: Se a criança for BOA, REVERTE o presente para o desejo original.
