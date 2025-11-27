@@ -1,54 +1,66 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
 package com.northpole.auditoria_elfos.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import org.hibernate.envers.Audited;
-import jakarta.persistence.*;
 
 @Entity
-@Audited // **IMPORTANTE: Entidade auditada**
+@Audited
 public class Crianca {
+	@Id
+	@GeneratedValue(
+			strategy = GenerationType.IDENTITY
+	)
+	private Long id;
+	private String nome;
+	private String presente;
+	private boolean bemComportada;
 
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		private Integer criancaId;
+	public Crianca() {
+	}
 
-		private String criancaName;
+	public Crianca(String nome, String presente, boolean bemComportada) {
+		this.nome = nome;
+		this.presente = presente;
+		this.bemComportada = bemComportada;
+	}
 
-		// TINYINT no BD é mapeado para Boolean em JPA/Java
-		private Boolean criancaComportamento;
+	public Long getId() {
+		return this.id;
+	}
 
-		@OneToOne(cascade = CascadeType.ALL)
-		@JoinColumn(name = "Pedido_pedidoId")
-		private Pedido pedido;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-		public Integer getCriancaId() {
-				return criancaId;
-		}
+	public String getNome() {
+		return this.nome;
+	}
 
-		public void setCriancaId(Integer criancaId) {
-				this.criancaId = criancaId;
-		}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-		public String getCriancaName() {
-				return criancaName;
-		}
+	public String getPresente() {
+		return this.presente;
+	}
 
-		public void setCriancaName(String criancaName) {
-				this.criancaName = criancaName;
-		}
+	public void setPresente(String presente) {
+		this.presente = presente;
+	}
 
-		public Boolean getCriancaComportamento() {
-				return criancaComportamento;
-		}
+	public boolean isBemComportada() {
+		return this.bemComportada;
+	}
 
-		public void setCriancaComportamento(Boolean criancaComportamento) {
-				this.criancaComportamento = criancaComportamento;
-		}
-
-		public Pedido getPedido() {
-				return pedido;
-		}
-
-		public void setPedido(Pedido pedido) {
-				this.pedido = pedido;
-		}
+	public void setBemComportada(boolean bemComportada) {
+		this.bemComportada = bemComportada;
+	}
 }
