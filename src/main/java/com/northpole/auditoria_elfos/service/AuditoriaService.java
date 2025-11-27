@@ -33,8 +33,8 @@ public class AuditoriaService {
         nova.setNome(dtoRequest.nome());
         nova.setPresente(dtoRequest.presente());
         nova.setBemComportada(dtoRequest.bemComportada());
-        Crianca save = (Crianca)this.repository.save(nova);
-        return (Crianca)this.repository.save(save);
+        Crianca save = this.repository.save(nova);
+        return this.repository.save(save);
     }
 
 
@@ -42,12 +42,12 @@ public class AuditoriaService {
     @Transactional
     public void fiscalizarTodaLista() {
         List<Crianca> lista = this.repository.findAll();
-        Iterator var2 = lista.iterator();
+        Iterator<Crianca> var2 = lista.iterator();
 
         while(var2.hasNext()) {
             Crianca crianca = (Crianca)var2.next();
             if (!crianca.isBemComportada()) {
-                crianca.setPresente("Picles de Jiló");
+                crianca.setPresente("Picles de Picolé de Bacalhau");
             }
         }
 
@@ -180,9 +180,9 @@ public class AuditoriaService {
         crianca.setBemComportada(bomComportamento);
 
         if (!bomComportamento) {
-            // Regra A: Se a criança for MÁ, o presente é "Jiló"
-            crianca.setPresente("Jiló em Conserva");
-            System.out.println("⚠️ ALERTA! " + crianca.getNome() + " receberá Jiló.");
+            // Regra A: Se a criança for MÁ, o presente é "Picolé de Bacalhau"
+            crianca.setPresente("Picolé de Bacalhau em Conserva");
+            System.out.println("⚠️ ALERTA! " + crianca.getNome() + " receberá Picolé de Bacalhau.");
 
         } else {
             // Regra B: Se a criança for BOA, REVERTE o presente para o desejo original.

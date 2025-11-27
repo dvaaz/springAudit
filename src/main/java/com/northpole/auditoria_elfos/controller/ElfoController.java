@@ -9,19 +9,17 @@ import com.northpole.auditoria_elfos.entity.*;
 import com.northpole.auditoria_elfos.service.AuditoriaService;
 import java.util.List;
 
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.history.Revisions;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping({"/elfos"})
 public class ElfoController {
-    @Autowired
-    private AuditoriaService service;
+    private final AuditoriaService service;
 
-    public ElfoController() {
+    public ElfoController(AuditoriaService service) {
+		    this.service = service;
     }
 
     @PostMapping({"/criar-pedido"})
@@ -44,7 +42,7 @@ public class ElfoController {
     @GetMapping({"/{id}/historico"})
     @Tag(name="Histórico", description="Demonstrativo de toda as informações referentes a revisao")
     public Revisions<Long, Crianca> verHistorico(@PathVariable Long id) {
-        return this.service.obterHistorico(id);
+		    return this.service.obterHistorico(id);
     }
 
 
