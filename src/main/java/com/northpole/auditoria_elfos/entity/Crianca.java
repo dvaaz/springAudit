@@ -12,7 +12,7 @@ import jakarta.persistence.Id;
 import org.hibernate.envers.Audited;
 
 @Entity
-@Audited
+@Audited // Marcando que ESSA classe é auditada
 public class Crianca {
 	@Id
 	@GeneratedValue(

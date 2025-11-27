@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 // Define que esta é a nova entidade de revisão que o Envers deve usar
 @Entity
-@RevisionEntity(ElfoRevisionListener.class)
+@RevisionEntity(ElfoRevisionListener.class) // Anotacao da entidade revisora
 @Table(name = "elfo_rev_info") // Use um nome de tabela customizado
 public class ElfoRevisionEntity implements Serializable {
 
